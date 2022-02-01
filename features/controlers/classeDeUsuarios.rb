@@ -1,4 +1,4 @@
-class ClasseDeUsuarios
+class Usuarios
     include HTTParty
     include RSpec::Matchers
     

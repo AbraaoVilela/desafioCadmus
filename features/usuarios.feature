@@ -4,7 +4,7 @@
 
 Funcionalidade: Usuarios
 
-@usuario_Naik
+@userNaik
 Cenário: Buscar Com Sucesso O Usuario 
     Dado que realizo a request para buscar o usuário
     Quando envio a busca para o usuário Naik
@@ -16,19 +16,20 @@ Cenário: Validar ID Do Usuario Encontrado
     Quando busco o primeiro ID da lista dos usuarios
     Então valido os detalher do usuario
 
-@criacaoUsuarios
+@criacaoUser
 Cenário: Criar Novo Usuário Com Sucesso
     Dado que realizo a request para criar o usuário
     Quando envio a request para criação do usuário
     Então a criação do novo usuário é realizada com sucesso
 
-@atualizarUsuario
+@atualizarUser
 Cenário: Fazer A Atualização Do Usuário Com Sucesso
     Dado que realizo a request para atualizar o usuário
     Quando envio a request para atualizar o usuário
     Então meu usuário é atualizado com sucesso
 
-@deletarUsuario
+@deletarUser
+Cenário: Deletar O Usuário Com Sucesso
     Dado que realizo a request para deletar o usuário
     Quando envio a request para deletar o usuário
     Então valido que o usuário é deletado com sucesso
