@@ -18,7 +18,7 @@ class Usuarios
     end
 
     def formatarJsonUsuario
-        json = File.read('features/templates/post_create_user.json')
+        json = File.read('features/templates/RequestPostUser.json')
         json_parsed = JSON.parse(json)
         json_parsed['name'] = Faker::Name.name
         json_parsed['email'] = Faker::Internet.email
@@ -27,7 +27,7 @@ class Usuarios
     end
 
     def formatarJsonParaAtualizarOUsuario
-        json = File.read('features/templates/put_update_user.json')
+        json = File.read('features/templates/RequestAtualizarUser.json')
         json_parsed = JSON.parse(json)
         json_parsed['name'] = Faker::Name.name + " Update"
         json_parsed['email'] = Faker::Internet.email
@@ -51,10 +51,10 @@ class Usuarios
         self.class.delete(ENDPOINTS['users'] + "/#{id}", headers: { "Authorization" => "Bearer #{auth}"})
     end
 
-    def verificarOsDetalhesDoUsuario(usuarioNaik)
-        expect(usuarioNaik.code).to eq 200
+    def verificarOsDetalhesDoUsuario(primeiroId)
+        expect(primeiroId.code).to eq 200
 
-        data = usuarioNaik["data"]
+        data = primeiroId["data"]
         number = data.length
         var = 0
 
@@ -66,9 +66,9 @@ class Usuarios
         
     end 
 
-    def criacaoDoUsuario(primeiroId)
-        expect(first_id.code).to eq 200
-        expect(first_id).to include("data")
+    def criacaoDoUsuario(usuario)
+        expect(usuario.code).to eq 200
+        expect(usuario).to include("data")
     end
 
     def criacaoDoUsuarioComTodosAtributos(usuarioCriado)

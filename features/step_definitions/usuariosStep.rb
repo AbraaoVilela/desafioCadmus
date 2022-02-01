@@ -13,7 +13,7 @@ end
 
 
 Dado('que realizo a busca na lista de todos os usuarios') do
-  @id = @page.(Usuarios).pegarUsuarios 
+  @id = @page.(Usuarios).pegarTodosUsuarios 
 end
 
 Quando('busco o primeiro ID da lista dos usuarios') do
@@ -21,7 +21,7 @@ Quando('busco o primeiro ID da lista dos usuarios') do
 end
 
 Então('valido os detalher do usuario') do
-  @page = @page.(Usuarios).verificarOsDetalhesDoUsuario(@usuarioNaik)
+  @page = @page.(Usuarios).verificarOsDetalhesDoUsuario(@responsePrimeiroId)
 end
 
 Dado('que realizo a request para criar o usuário') do
@@ -29,11 +29,11 @@ Dado('que realizo a request para criar o usuário') do
 end
 
 Quando('envio a request para criação do usuário') do
-  @criacaoUsuario = @page.(Usuarios).createUsuario(@payload)
+  @criacaoUsuario = @page.(Usuarios).criacaoUsuario(@payload)
 end
 
 Então('a criação do novo usuário é realizada com sucesso') do
- @page = @page.(Usuarios).verificarOsDetalhesDoUsuario(@criacaoUsuario)
+ @page = @page.(Usuarios).criacaoDoUsuario(@criacaoUsuario)
 end
 
 Dado('que realizo a request para atualizar o usuário') do
@@ -61,7 +61,7 @@ Dado('que realizo a request para deletar o usuário') do
 end
 
 Quando('envio a request para deletar o usuário') do
- @usuarioDeletado = @page.(Usuarios).deletarUsuario(@usuarioCriado)
+ @usuarioDeletado = @page.(Usuarios).deletarUsuario(@criacaoUsuario)
 end
 
 Então('valido que o usuário é deletado com sucesso') do
